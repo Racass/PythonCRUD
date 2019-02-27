@@ -1,10 +1,12 @@
 import alunos
+import os
 from pyforms.basewidget import BaseWidget
 from pyforms.controls   import ControlFile
 from pyforms.controls   import ControlText
 from pyforms.controls   import ControlSlider
 from pyforms.controls   import ControlPlayer
 from pyforms.controls   import ControlButton
+from pyforms.controls   import ControlCheckBox
 
 
 class ComputerVisionAlgorithm(BaseWidget):
@@ -13,12 +15,14 @@ class ComputerVisionAlgorithm(BaseWidget):
 
     def __init__(self, *args, **kwargs):
         super().__init__('Computer vision algorithm example')
+    
 
         #Definition of the forms fields
         self._ra    = ControlText('RA')
         self._nome = ControlText('nome')
-        self._situacao = ControlText('situacao')
+        self._situacao = ControlCheckBox('situacao')
         self._syncButton = ControlButton('Ok')
+        
 
         self._delForm = ControlButton('Modo deletar')
         self._updForm = ControlButton('Modo atualizar')
@@ -44,7 +48,8 @@ class ComputerVisionAlgorithm(BaseWidget):
     def mudeiValor(self):
         self.alun.nome = self._nome.value
         self.alun.situacao = bool(self._situacao.value)
-        self.changeForm('U')
+        if(self.formMethod == 'O'):
+            self.changeForm('U')
     def mudeiRA(self):
         self.alun.RA = self._ra.value
     def syncEvent(self):
@@ -52,6 +57,8 @@ class ComputerVisionAlgorithm(BaseWidget):
             self.alun.Sync()
         elif(self.formMethod == 'D'):
             self.alun.delete()
+            self.clearScreen()
+            self.changeForm('O')
         elif(self.formMethod == 'G'):
             self.alun.getAlunos()
             self.updTxts()
