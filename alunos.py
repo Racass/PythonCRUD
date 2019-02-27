@@ -1,10 +1,10 @@
-import MySQLDB
+from DataBase.MySQL.MySQLDB import mySQL
 import mysql.connector
 class alunos:
     RA = 0
     nome = ""
     situacao = False
-    db = MySQLDB.mySQL()
+    db = mySQL()
     
     def getAlunos(self):
         sqlGet = f"SELECT RA, nome, situacao FROM alunos WHERE RA = {self.RA}"

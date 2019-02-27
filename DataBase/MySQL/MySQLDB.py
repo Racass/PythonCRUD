@@ -1,8 +1,8 @@
 import mysql.connector
-import connector
+from DataBase.myConns import getMySQLConn
 
 class mySQL:
-    myDB = connector.getMySQLConn()
+    myDB = getMySQLConn()
     autoCommit = True
     def execModQuery(self, query: str) -> int:
         myCursor = self.myDB.cursor()
