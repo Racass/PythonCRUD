@@ -8,7 +8,6 @@ from pyforms.controls   import ControlPlayer
 from pyforms.controls   import ControlButton
 from pyforms.controls   import ControlCheckBox
 
-
 class ComputerVisionAlgorithm(BaseWidget):
     formMethod = "A"
     alun = alunos.alunos(0)
@@ -23,7 +22,6 @@ class ComputerVisionAlgorithm(BaseWidget):
         self._situacao = ControlCheckBox('situacao')
         self._syncButton = ControlButton('Ok')
         
-
         self._delForm = ControlButton('Modo deletar')
         self._updForm = ControlButton('Modo atualizar')
         self._addForm = ControlButton('Modo adicionar')
@@ -46,6 +44,8 @@ class ComputerVisionAlgorithm(BaseWidget):
             ('_delForm', '_updForm', '_addForm', '_getForm')
         ]
     def mudeiValor(self):
+        if(self.formMethod == 'G'):
+            return
         self.alun.nome = self._nome.value
         self.alun.situacao = bool(self._situacao.value)
         if(self.formMethod == 'O'):
@@ -67,7 +67,7 @@ class ComputerVisionAlgorithm(BaseWidget):
     def updTxts(self):
         self._ra.value = str(self.alun.RA)
         self._nome.value = str(self.alun.nome)
-        self._situacao.value = str(self.alun.situacao)
+        self._situacao.value = bool(self.alun.situacao)
     def changeForm(self, method: str):
         self.formMethod = method
         if(method == 'D'): #Delete
@@ -90,11 +90,11 @@ class ComputerVisionAlgorithm(BaseWidget):
     def clearToAdd(self):
         self._ra.value = str(self.alun.getNext())
         self._nome.value = ""
-        self._situacao.value = ""
+        self._situacao.value = False
     def clearScreen(self):
         self._ra.value = ""
         self._nome.value = ""
-        self._situacao.value = ""
+        self._situacao.value = False
 if __name__ == '__main__':
     from pyforms import start_app
     start_app(ComputerVisionAlgorithm)

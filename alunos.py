@@ -12,7 +12,7 @@ class alunos:
         for result in oRS:
             self.RA = result[0]
             self.nome = result[1]
-            self.situacao = result[2]
+            self.situacao = bool(result[2])
     
     def __init__(self, ra, nome = "", situacao = False):
         self.RA = ra
