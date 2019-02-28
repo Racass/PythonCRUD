@@ -1,16 +1,16 @@
 import mysql.connector
 from DataBase.myConns import getMySQLConn
+from DataBase.database import DataBase
 
-class mySQL:
+class mySQL(DataBase):
     myDB = getMySQLConn()
-    autoCommit = True
     def execModQuery(self, query: str) -> int:
         myCursor = self.myDB.cursor()
         myCursor.execute(query)
         if(self.autoCommit):
             self.myDB.commit()
         return myCursor.rowcount
-    def execReadQuery(self, query: str):
+    def execReadQuery(self, query: str) -> tuple:
         myCursor = self.myDB.cursor()
         myCursor.execute(query)
         return myCursor.fetchall()
