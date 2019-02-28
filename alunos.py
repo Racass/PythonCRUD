@@ -4,7 +4,7 @@ class alunos:
     RA = 0
     nome = ""
     situacao = False
-    db = mySQL()
+    db = mySQL(True)
     
     def getAlunos(self):
         sqlGet = f"SELECT RA, nome, situacao FROM alunos WHERE RA = {self.RA}"
