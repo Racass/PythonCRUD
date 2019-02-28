@@ -5,6 +5,7 @@ A muti database simple CRUD write on Python
   
 ## TODO
 
-- [ ] Adicionar MySQL  
+- [x] Criar classe abstrata para os diferentes tipos de banco de dados
+- [x] Adicionar MySQL  
 - [ ] Adicionar MSSQL
 - [ ] Adicionar PostgreeSQL
