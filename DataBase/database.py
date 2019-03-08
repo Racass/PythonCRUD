@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
 
 class DataBase:
-    @property
-    def autoCommit(self):
-        return self.autoCommit
+
     def __init__(self, autoCommit: bool):
         self.autoCommit = autoCommit
         super().__init__()
