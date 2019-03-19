@@ -1,4 +1,4 @@
-import alunos
+from DataAccess.alunos import alunos
 import os
 from pyforms.basewidget import BaseWidget
 from pyforms.controls   import ControlFile
