@@ -9,3 +9,4 @@ A muti database simple CRUD write on Python
 - [x] Adicionar MySQL  
 - [ ] Adicionar MSSQL
 - [ ] Adicionar PostgreeSQL
+- [ ] Adicionar integração ao git no VSCode
